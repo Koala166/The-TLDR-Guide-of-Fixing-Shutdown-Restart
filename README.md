@@ -65,3 +65,5 @@ When finished, your config.plist file should look like something like this:
 
 Finally, for the patch to work you may need to change some power settings in System Preferences. The one that seems to affect the system shutdown is **Power Nap**. If your computer still restarts at shutdown, try disabling Power Nap in both the **Battery** and the **Power Adapter** sections.
 
+## Further help
+If you did all of the above but still haven't managed to solve the issue, I'm afraid I can't be of much help. I have no real technical knowledge of ACPI. I suggest you ask for help from the [Hackintosh SubReddit](https://www.reddit.com/r/hackintosh/) community.
