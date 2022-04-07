@@ -16,6 +16,8 @@ This patch is implemented in two parts:
 1. an SSDT file named [FixShutdown-USB-SSDT.dsl](https://github.com/dortania/OpenCore-Post-Install/blob/master/extra-files/FixShutdown-USB-SSDT.dsl) that contains the correct shutdown command for our USB controller.  
 2. [an ACPI patch](https://github.com/dortania/OpenCore-Post-Install/blob/master/extra-files/FixShutdown-Patch.plist) in the OpenCore config.plist file which will enable the use of the SSDT file.
 
+You may also need to **disable Power Nap** in macOS System Preferences. (Actually, try this before adding this patch to Open Core. If you're lucky you may not need the patch).
+
 ### Editing the SSDT file
 The SSDT file must be edited with the correct "name" for our USB controller. So the first thing we need to do is figure out what that name is. (This "name" is properly called an **ACPI path**.)  
 
@@ -40,8 +42,22 @@ Note: to edit (and compile) the SSDT file [FixShutdown-USB-SSDT.dsl](https://git
 2. Look for `External (_SB_.PCI0.XHC_.PMEE` in the code and replace it with your USB controller's ACPI path (in this example with `External (_SB_.PCI0.XHC_`).
 3. Look for `\_SB.PCI0.XHC.PMEE = Zero` and replace it your USB controller's ACPI path (in this example with `\_SB.PCI0.XHC = Zero`)
 
-Note: Youl'll notice that the ACPI path in step 3 has some underscores missing. I don't know the ACPI programming language so I'm not certain why the second instance of ACPI path differs from the first, but by mimicking the format of the original ACPI path the patch works. If it does not work for you, try it with and without the underscores.
+Note: Youl'll notice that the ACPI path in step 3 has some underscores (_) missing. I don't know the [ACPI programming language](https://acpica.org/sites/acpica/files/acpica-reference_19.pdf) so I'm not certain why the second instance of ACPI path differs from the first, but by mimicking the formatting of the original ACPI path the patch worked for me. If it does not work for you, try it with and without the underscores.
 
 After you finish editing the file, you need to select **Save As...** and save the file with the format **ACPI Machine Language Binary**. (It has the name extension .aml instead of .dsl).
 
-Then you are ready to move the newly edited .aml file into your **ACPI folder**. I'm going to assume you know where that folder is located.
+Then you are ready to move the newly edited .aml file into your **ACPI folder**. I'm going to assume you [know where that folder is located](https://dortania.github.io/Getting-Started-With-ACPI/ssdt-methods/ssdt-easy.html#adding-to-opencore).
+
+### Editing the OpenCore config.plist file
+
+Fortunately, this is much simpler than the SSDT file. You don't need to adjust the ACPI patch. Just apply it as is.
+
+Open the your config.plist file in a [plist editor](https://github.com/corpnewt/ProperTree) and copy the contents of [this file](https://github.com/dortania/OpenCore-Post-Install/blob/master/extra-files/FixShutdown-Patch.plist) into it.
+
+When finished, your config.plist file should look like something like this:
+
+
+### macOS power settings
+
+Finally, for the patch to work you may need to change some power settings in System Preferences. The one that seems to affect the system shutdown is **Power Nap**. If your computer still restarts at shutdown, try disabling Power Nap in both the **Battery** and the **Power Adapter** sections.
+
