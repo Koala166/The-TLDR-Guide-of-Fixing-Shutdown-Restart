@@ -58,7 +58,7 @@ Open your config.plist file in a [plist editor](https://github.com/corpnewt/Prop
 
 While you have the OpenCore config.plist file open, don't forget to add the FixShutdown-USB-SSDT.aml in the ACPI -> Add section.
 
-When finished, your config.plist file should look like something like this:
+When finished, the relevant sections of your config.plist file should look something like this:
 
 
 ### macOS power settings
