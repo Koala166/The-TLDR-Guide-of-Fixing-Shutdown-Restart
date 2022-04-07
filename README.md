@@ -48,11 +48,15 @@ After you finish editing the file, you need to select **Save As...** and save th
 
 Then you are ready to move the newly edited .aml file into your **ACPI folder**. I'm going to assume you [know where that folder is located](https://dortania.github.io/Getting-Started-With-ACPI/ssdt-methods/ssdt-easy.html#adding-to-opencore).
 
+Afterwards, you'll need to add to the FixShutdown-USB-SSDT.aml entry into the ACPI -> Add section of the config.plist file so that Open Core knows its there.
+
 ### Editing the OpenCore config.plist file
 
 Fortunately, this is much simpler than the SSDT file. You don't need to adjust the ACPI patch. Just apply it as is.
 
-Open the your config.plist file in a [plist editor](https://github.com/corpnewt/ProperTree) and copy the contents of [this file](https://github.com/dortania/OpenCore-Post-Install/blob/master/extra-files/FixShutdown-Patch.plist) into it.
+Open your config.plist file in a [plist editor](https://github.com/corpnewt/ProperTree) and copy the contents of [the FixShutdown-Patch.plist file](https://github.com/dortania/OpenCore-Post-Install/blob/master/extra-files/FixShutdown-Patch.plist) into it.
+
+While you have the OpenCore config.plist file open, don't forget to add the FixShutdown-USB-SSDT.aml in the ACPI -> Add section.
 
 When finished, your config.plist file should look like something like this:
 
