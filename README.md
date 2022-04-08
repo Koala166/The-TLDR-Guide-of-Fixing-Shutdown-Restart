@@ -73,10 +73,13 @@ While you have the OpenCore config.plist file open, don't forget to add the FixS
 
 When finished, the relevant sections of your config.plist file should look something like this:
 
+![](/images/config_example.png)  
 
 ### macOS power settings
 
 Finally, for the patch to work you may need to change some power settings in System Preferences. The one that seems to affect the system shutdown is **Power Nap**. If your computer still restarts at shutdown, try disabling Power Nap in both the **Battery** and the **Power Adapter** sections.
+
+![](/images/Disable_PowerNap.png)  
 
 Note: you can also disable Power Nap from the terminal with the command `sudo pmset powernap 0` 
 
