@@ -37,6 +37,8 @@ This is the ACPI path we need for the SSDT file.
 
 **What to do if you have multiple USB controllers.**  
 If in Device Manager -> Universal Serial Bus Controllers you see more than one entry with "controller" in its name, you will need to copy the ACPI paths for each one.
+[[/images/Multiple USB controllers DM example.png]]
+
 
 **Here's how to edit your SSDT file:** 
 
