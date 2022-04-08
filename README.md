@@ -30,13 +30,16 @@ The SSDT file must be edited with the correct "name" for our USB controller. So 
 4. In that category, select the entry that has "controller" in its name. Right-click on it and select **Properties**.  
 5. In the properties window, go to the **Location Paths** section and copy the data there (usually its the second line).
 
+![](/images/DMProperties01.PNG)
+
 An example of what you'll probably see: `ACPI(_SB_)#ACPI(PCI0)#ACPI(XHC_)`  
 	
 The ACPI path is the text in parenthesis, so by leaving everything else out we get: `_SB_PCI0XHC_` and we add full stops to separate the three elements: `_SB_.PCI0.XHC_`   
 This is the ACPI path we need for the SSDT file.  
 
 **What to do if you have multiple USB controllers.**  
-If in Device Manager -> Universal Serial Bus Controllers you see more than one entry with "controller" in its name, you will need to copy the ACPI paths for each one.
+If in Device Manager -> Universal Serial Bus Controllers you see more than one entry with "controller" in its name, you will need to copy the ACPI paths for each one.  
+![](/images/Multiple_USB_controllers_DM_example.png)  
 
 **Here's how to edit your SSDT file:** 
 
@@ -46,11 +49,12 @@ Note: to edit (and compile) the SSDT file [FixShutdown-USB-SSDT.dsl](https://git
 2. Look for `External (_SB_.PCI0.XHC_.PMEE` in the code and replace it with your USB controller's ACPI path (in this example with `External (_SB_.PCI0.XHC_`).
 3. Look for `\_SB.PCI0.XHC.PMEE = Zero` and replace it your USB controller's ACPI path (in this example with `\_SB.PCI0.XHC = Zero`)
 
+![](/images/Edit_ACPI_path_example.png)  
+
 Note: Youl'll notice that the ACPI path in step 3 has some underscores (_) missing. I don't know the [ACPI programming language](https://acpica.org/sites/acpica/files/acpica-reference_19.pdf) so I'm not certain why the second instance of ACPI path differs from the first, but by mimicking the formatting of the original ACPI path the patch worked for me. If it does not work for you, try it with and without the underscores.
 
 **What to do if you have multiple USB controllers.**  
-You will need to copy the entire code from and duplicate it inside the file, replacing the ACPI path for each USB controller you have.
-![](/images/Multiple_USB_controllers_DM_example.png)  
+You'll probably need to copy the entire code and duplicate it inside the file, replacing the ACPI path for each USB controller you have. (Note: **I haven't tested this. May not work**).    
 ![](/images/Multiple_USB_controllers_SSDT_example.png)
 
 After you finish editing the file, you need to select **Save As...** and save the file with the format **ACPI Machine Language Binary**. (It has the name extension .aml instead of .dsl).
