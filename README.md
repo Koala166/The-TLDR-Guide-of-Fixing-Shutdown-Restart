@@ -1,7 +1,7 @@
 # The TLDR Guide of Fixing Shutdown/Restart
 
 This guide is a simplified (if somewhat expanded) version of the section [Fixing Shutdown/Restart](https://dortania.github.io/OpenCore-Post-Install/usb/misc/shutdown.html#fixing-shutdown-restart) found in [Dortania's OpenCore Post-Install Guide](https://dortania.github.io/OpenCore-Post-Install/).  
-
+[[images/Multiple USB controllers DM example.png]|Example]
 I wrote this guide  because I could not understand the steps in the original guide as they where written. It took me a lot of time, frusrtation, and trial-and-error to finally figure it out. 
  
 This is a combination of personal notes (in case I ever need to do this procedure again) and a guide for others who have the same difficulty I had in understanding the original guide.
@@ -37,8 +37,6 @@ This is the ACPI path we need for the SSDT file.
 
 **What to do if you have multiple USB controllers.**  
 If in Device Manager -> Universal Serial Bus Controllers you see more than one entry with "controller" in its name, you will need to copy the ACPI paths for each one.
-[[/images/Multiple USB controllers DM example.png]]
-
 
 **Here's how to edit your SSDT file:** 
 
