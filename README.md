@@ -1,7 +1,7 @@
 # The TLDR Guide of Fixing Shutdown/Restart
 
 This guide is a simplified (if somewhat expanded) version of the section [Fixing Shutdown/Restart](https://dortania.github.io/OpenCore-Post-Install/usb/misc/shutdown.html#fixing-shutdown-restart) found in [Dortania's OpenCore Post-Install Guide](https://dortania.github.io/OpenCore-Post-Install/).  
-[[/images/Multiple_USB_controllers_DM_example.png]|Example]
+
 I wrote this guide  because I could not understand the steps in the original guide as they where written. It took me a lot of time, frusrtation, and trial-and-error to finally figure it out. 
  
 This is a combination of personal notes (in case I ever need to do this procedure again) and a guide for others who have the same difficulty I had in understanding the original guide.
@@ -50,7 +50,8 @@ Note: Youl'll notice that the ACPI path in step 3 has some underscores (_) missi
 
 **What to do if you have multiple USB controllers.**  
 You will need to copy the entire code from and duplicate it inside the file, replacing the ACPI path for each USB controller you have.
-
+![](/images/Multiple_USB_controllers_DM_example.png)  
+![](/images/Multiple_USB_controllers_SSDT_example.png)
 
 After you finish editing the file, you need to select **Save As...** and save the file with the format **ACPI Machine Language Binary**. (It has the name extension .aml instead of .dsl).
 
