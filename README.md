@@ -8,7 +8,7 @@ This is a combination of personal notes (in case I ever need to do this procedur
 
 ## The problem:
 When you select *shutdown* on your Hackintosh, the computer restarts instead.
-
+![](/images/Shutdown.png)
 
 ## The solution:
 [According to the original guide](https://dortania.github.io/OpenCore-Post-Install/usb/misc/shutdown.html#fixing-shutdown-restart) the problem is that the USB controller is not getting the correct command to shut down. So we need to create a patch to send the correct command to the USB controller.
