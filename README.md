@@ -7,7 +7,7 @@ I wrote this guide  because I could not understand the steps in the original gui
 This is a combination of personal notes (in case I ever need to do this procedure again) and a guide for others who have the same difficulty I had in understanding the original guide.
 
 ## The problem:
-When you select *shutdown* on your Hackintosh, the computer restarts instead.
+When you select *shutdown* on your Hackintosh, the computer restarts instead.  
 ![](/images/Shutdown.png)
 
 ## The solution:
@@ -51,7 +51,7 @@ Note: to edit (and compile) the SSDT file [FixShutdown-USB-SSDT.dsl](https://git
 
 ![](/images/Edit_ACPI_path_example.png)  
 
-Note: Youl'll notice that the ACPI path in step 3 has some underscores (_) missing. I don't know the [ACPI programming language](https://acpica.org/sites/acpica/files/acpica-reference_19.pdf) so I'm not certain why the second instance of ACPI path differs from the first, but by mimicking the formatting of the original ACPI path the patch worked for me. If it does not work for you, try it with and without the underscores.
+Note: You'll notice that the ACPI path in step 3 has some underscores (_) missing. I don't know the [ACPI programming language](https://acpica.org/sites/acpica/files/acpica-reference_19.pdf) so I'm not certain why the second instance of ACPI path differs from the first, but by mimicking the formatting of the original ACPI path the patch worked for me. If it does not work for you, try it with and without the underscores.
 
 **What to do if you have multiple USB controllers.**  
 You'll probably need to copy the entire code and duplicate it inside the file, replacing the ACPI path for each USB controller you have. (Note: **I haven't tested this. May not work**).    
